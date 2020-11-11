@@ -34,7 +34,7 @@ $ git clone https://github.com/lyderic/falko
 ```
 $ cp -riv falko/falko@lyderic.com ~/.local/share/gnome-shell/extensions
 ```
-5. Restart GNOME shell (Alt-F2 -> r) or, if you run Wayloand, log out and log in again.
+5. Restart GNOME shell (Alt-F2 -> r) or, if you run Wayland, log out and log in again.
 
 6. Enable this extension:
 
