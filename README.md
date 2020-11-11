@@ -13,23 +13,33 @@ It is heavily inpired by [Argos](https://github.com/p-e-w/argos). It is much sim
 
 1. Check your GNOME shell version:
 
-    $ gnome-shell --version
+```
+$ gnome-shell --version
+```
 
 2. Create the following directory if it doesn't exist on your system:
 
-    $ mkdir -pv ${HOME}/.local/share/gnome-shell/extensions
+```
+$ mkdir -pv ${HOME}/.local/share/gnome-shell/extensions
+```
 
 3. Clone this repository:
 
-    $ git clone https://github.com/lyderic/falko
+```
+$ git clone https://github.com/lyderic/falko
+```
 
 4. Copy the extension directory to the relevant location:
 
-    $ cp -riv falko@lyderic.com ~/.local/share/gnome-shell/extension
+```
+$ cp -riv falko@lyderic.com ~/.local/share/gnome-shell/extension
+```
 
 5. Enable this extension:
 
-    $ gnome-extensions enable falko@lyderic.com
+```
+$ gnome-extensions enable falko@lyderic.com
+```
 
 6. Restart GNOME shell: Alt-F2 -> r
 
