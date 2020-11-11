@@ -32,15 +32,16 @@ $ git clone https://github.com/lyderic/falko
 4. Copy the extension directory to the relevant location:
 
 ```
-$ cp -riv falko@lyderic.com ~/.local/share/gnome-shell/extensions
+$ cp -riv falko/falko@lyderic.com ~/.local/share/gnome-shell/extensions
 ```
+5. Log out and log in again.
 
-5. Enable this extension:
+6. Enable this extension:
 
 ```
 $ gnome-extensions enable falko@lyderic.com
 ```
 
-6. Restart GNOME shell: Alt-F2 -> r
+7. Restart GNOME shell: Alt-F2 -> r
 
-7. You should now see 'falko' displayed in your upper bar. This is the output of the following script: **${HOME}/.config/falko/falko-example.sh**. From now on, each executable found in ${HOME}/.config/falko will be executed every 2.5 seconds and its output displayed.
+8. You should now see 'falko' displayed in your upper bar. This is the output of the following script: **${HOME}/.config/falko/falko-example.sh**. From now on, each executable found in ${HOME}/.config/falko will be executed every 2.5 seconds and its output displayed.
