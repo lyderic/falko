@@ -32,7 +32,7 @@ $ git clone https://github.com/lyderic/falko
 4. Copy the extension directory to the relevant location:
 
 ```
-$ cp -riv falko@lyderic.com ~/.local/share/gnome-shell/extension
+$ cp -riv falko@lyderic.com ~/.local/share/gnome-shell/extensions
 ```
 
 5. Enable this extension:
