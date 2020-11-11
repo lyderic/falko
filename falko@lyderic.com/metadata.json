@@ -1,0 +1,10 @@
+{
+	"name": "falko",
+	"description": "display output of scripts in upper bar",
+	"shell-version": [
+		"3.36"
+	],
+	"url": "https://github.com/lyderic/falko",
+	"uuid": "falko@lyderic.com",
+	"version": 1.0
+}

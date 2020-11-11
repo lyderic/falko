@@ -1,0 +1,56 @@
+#!/bin/sh
+
+PROGRAM=$(basename $0)
+LOCK="${XDG_RUNTIME_DIR}/${PROGRAM}.lock"
+OUTPUT="${XDG_RUNTIME_DIR}/${PROGRAM}.out"
+EXECUTABLE_DIR="${HOME}/.config/falko"
+
+main() {
+	# echo tick
+	# ensure only one instance of this script is running
+	if mkdir ${LOCK} ; then
+		trap "rmdir ${LOCK}" EXIT 
+	else
+		printout "LOCK: one of the executables in ${EXECUTABLE_DIR} takes too long!"
+		return 3
+	fi
+  # execute all the executables found in dir and
+	# concatenate their output
+	if [ ! -d "${EXECUTABLE_DIR}" ] ; then
+		initialize
+	fi
+	for ITEM in ${EXECUTABLE_DIR}/* ; do
+		if [ -d "${ITEM}" ] ; then continue ; fi
+		if [ -x "${ITEM}" ] ; then
+			MESSAGE="${MESSAGE}$(${ITEM}) "
+		fi
+	done
+  # display concatenated output on a single line
+	MESSAGE="$(echo ${MESSAGE} | tr '\n' ' ')"
+	printout "${MESSAGE}"
+} 
+
+printout() {
+	printf "${1}" > "${OUTPUT}"
+}
+
+log() {
+	echo "$@"
+}
+
+initialize() {
+	log "'${EXECUTABLE_DIR}': directory not found!"
+	log "Initializing ${PROGRAM}..."
+	if ! mkdir -pv "${EXECUTABLE_DIR}" ; then
+		printout "Cannot create ${EXECUTABLE_DIR}!"
+		return 5
+	fi
+	cat > "${EXECUTABLE_DIR}/falko-example.sh" << EOF
+#!/bin/sh
+
+echo "falko"
+EOF
+	chmod -v +x "${EXECUTABLE_DIR}/falko-example.sh"
+}
+
+main $@
