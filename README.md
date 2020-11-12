@@ -9,7 +9,7 @@ It is heavily inpired by [Argos](https://github.com/p-e-w/argos). It is much sim
 
 # How to install?
 
-**Please note:** so far, I have only tested this extension on Ubuntu 20.04 with GNOME shell version 3.36.
+**Please note:** so far, I have only tested this extension on Ubuntu 20.04 with GNOME shell version 3.36, Fedora 33 with GNOME shell 3.38 and Manjaro with GNOME shell 3.38.
 
 1. Check your GNOME shell version:
 
@@ -32,15 +32,14 @@ $ git clone https://github.com/lyderic/falko
 4. Copy the extension directory to the relevant location:
 
 ```
-$ cp -riv falko@lyderic.com ~/.local/share/gnome-shell/extension
+$ cp -riv falko/falko@lyderic.com ~/.local/share/gnome-shell/extensions
 ```
+5. Restart GNOME shell (Alt-F2 -> r) or, if you run Wayland, log out and log in again.
 
-5. Enable this extension:
+6. Enable this extension:
 
 ```
 $ gnome-extensions enable falko@lyderic.com
 ```
-
-6. Restart GNOME shell: Alt-F2 -> r
 
 7. You should now see 'falko' displayed in your upper bar. This is the output of the following script: **${HOME}/.config/falko/falko-example.sh**. From now on, each executable found in ${HOME}/.config/falko will be executed every 2.5 seconds and its output displayed.
