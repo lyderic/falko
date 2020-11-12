@@ -1,28 +1,30 @@
 #!/bin/sh
 
 PROGRAM=$(basename $0)
-LOCK="${XDG_RUNTIME_DIR}/${PROGRAM}.lock"
+#LOCK="${XDG_RUNTIME_DIR}/${PROGRAM}.lock"
+LOCK_BASE_NAME="${XDG_RUNTIME_DIR}/${PROGRAM}-"
 OUTPUT="${XDG_RUNTIME_DIR}/${PROGRAM}.out"
 EXECUTABLE_DIR="${HOME}/.config/falko"
 
 main() {
 	# echo tick
-	# ensure only one instance of this script is running
-	if mkdir ${LOCK} ; then
-		trap "rmdir ${LOCK}" EXIT 
-	else
-		printout "LOCK: one of the executables in ${EXECUTABLE_DIR} takes too long!"
-		return 3
-	fi
   # execute all the executables found in dir and
 	# concatenate their output
 	if [ ! -d "${EXECUTABLE_DIR}" ] ; then
 		initialize
 	fi
-	for ITEM in ${EXECUTABLE_DIR}/* ; do
-		if [ -d "${ITEM}" ] ; then continue ; fi
-		if [ -x "${ITEM}" ] ; then
-			MESSAGE="${MESSAGE}$(${ITEM}) "
+	for EXECUTABLE in ${EXECUTABLE_DIR}/* ; do
+		if [ -d "${EXECUTABLE}" ] ; then continue ; fi
+		if [ -x "${EXECUTABLE}" ] ; then
+			# ensure only one instance of this executable is running
+			LOCK="${LOCK_BASE_NAME}$(basename ${EXECUTABLE}).lock"
+			if ! mkdir "${LOCK}" ; then
+				MESSAGE="${MESSAGE} — $(basename ${EXECUTABLE}) ☹ — "
+				continue
+			else
+				MESSAGE="${MESSAGE}$(${EXECUTABLE} 2>&1) "
+				rmdir "${LOCK}"
+			fi
 		fi
 	done
   # display concatenated output on a single line
@@ -31,7 +33,7 @@ main() {
 } 
 
 printout() {
-	printf "${1}" > "${OUTPUT}"
+	printf -- "${1}" > "${OUTPUT}"
 }
 
 log() {
