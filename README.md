@@ -9,7 +9,7 @@ It is heavily inpired by [Argos](https://github.com/p-e-w/argos). It is much sim
 
 # How to install?
 
-**Please note:** so far, I have only tested this extension on Ubuntu 20.04 with GNOME shell version 3.36, Fedora 33 with GNOME shell 3.38 and Manjaro with GNOME shell 3.38.
+**Please note:** so far, I have only tested this extension on Ubuntu 20.04 with GNOME shell version 3.36, Ubuntu 22.04 with GNOME shell version 42.4, Fedora 33 with GNOME shell 3.38 and Manjaro with GNOME shell 3.38 and 42.4.
 
 1. Check your GNOME shell version:
 

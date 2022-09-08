@@ -2,7 +2,9 @@
 	"name": "falko",
 	"description": "display output of scripts in upper bar",
 	"shell-version": [
-		"3.36"
+		"3.36",
+		"3.38",
+		"42.4"
 	],
 	"url": "https://github.com/lyderic/falko",
 	"uuid": "falko@lyderic.com",
