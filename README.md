@@ -2,7 +2,7 @@
 
 GNOME extension to display output of scripts in upper bar
 
-# **IMPORTANT NOTE**: this extension doesn't work in Gnome 45+. Gnome 45 makes a lot of breaking changes and I don't have the resource to implement them. Please don't deploy this on Gnome 45, it won't start anyway.**
+# **IMPORTANT NOTE: this extension doesn't work in Gnome 45+. Gnome 45 makes a lot of breaking changes and I don't have the resource to implement them. Please don't deploy this on Gnome 45, it won't start anyway.**
 
 # What does this extension do?
 
