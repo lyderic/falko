@@ -8,14 +8,12 @@ EXECUTABLE_DIR="${HOME}/.config/falko"
 
 main() {
 	# echo tick
-  # execute all the executables found in dir and
+	# execute all the executables found in dir and
 	# concatenate their output
-	if [ ! -d "${EXECUTABLE_DIR}" ] ; then
-		initialize
-	fi
+	[ -d "${EXECUTABLE_DIR}" ] || initialize
 	for EXECUTABLE in ${EXECUTABLE_DIR}/* ; do
-		if [ -d "${EXECUTABLE}" ] ; then continue ; fi
-		if [ -x "${EXECUTABLE}" ] ; then
+		[ -d "${EXECUTABLE}" ] && continue
+		[ -x "${EXECUTABLE}" ] && {
 			# ensure only one instance of this executable is running
 			LOCK="${LOCK_BASE_NAME}$(basename ${EXECUTABLE}).lock"
 			if ! mkdir "${LOCK}" ; then
@@ -25,12 +23,12 @@ main() {
 				MESSAGE="${MESSAGE}$(${EXECUTABLE} 2>&1) "
 				rmdir "${LOCK}"
 			fi
-		fi
+		}
 	done
-  # display concatenated output on a single line
+	# display concatenated output on a single line
 	MESSAGE="$(echo ${MESSAGE} | tr '\n' ' ')"
 	printout "${MESSAGE}"
-} 
+}
 
 printout() {
 	printf -- "${1}" > "${OUTPUT}"
